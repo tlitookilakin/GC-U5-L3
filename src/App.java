@@ -29,6 +29,9 @@ public class App {
         System.out.println("New tallest formation:");
         System.out.println(findTallest(Formations).getInfo());
         showInfo(Formations);
+
+        System.out.println("And the tallest mesa is:");
+        System.out.println(findTallestMesa(Formations).getInfo());
     }
 
     public static void showInfo(List<Formation> formations) {
@@ -43,6 +46,15 @@ public class App {
             if (tallest == null || tallest.getHeight() < formation.getHeight()) {
                 tallest = formation;
             }
+        }
+        return tallest;
+    }
+
+    public static Mesa findTallestMesa(List<Formation> formations) {
+        Mesa tallest = null;
+        for (Formation formation : formations) {
+            if (formation instanceof Mesa && (tallest == null || tallest.getHeight() < formation.getHeight()))
+                tallest = (Mesa)formation;
         }
         return tallest;
     }
